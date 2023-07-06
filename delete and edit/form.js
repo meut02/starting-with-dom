@@ -26,6 +26,16 @@ function onSubmit(e){
         setTimeout(()=>msg.remove(),3000)
     }
     else{
+        const userDetails={
+            name:nameInput.value,
+            email:emailInput.value
+
+        }
+        let existingUsers=localStorage.getItem('users')
+        existingUsers=existingUsers?JSON.parse(existingUsers):[]
+        existingUsers.push(userDetails)
+        localStorage.setItem('users',JSON.stringify(existingUsers))
+        
         const li=document.createElement('li')
         li.appendChild(document.createTextNode(`${nameInput.value}:${emailInput.value}`))
      userList.appendChild(li)
