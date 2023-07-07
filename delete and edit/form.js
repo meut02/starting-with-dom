@@ -11,6 +11,7 @@
 const myForm=document.querySelector('#my-form')
 const nameInput=document.querySelector('#name')
 const emailInput=document.querySelector('#email')
+const phoneInput=document.querySelector('#phone')
 const msg=document.querySelector('.msg')
 const userList=document.querySelector('#users')
 
@@ -28,7 +29,8 @@ function onSubmit(e){
     else{
         const userDetails={
             name:nameInput.value,
-            email:emailInput.value
+            email:emailInput.value,
+            phone:phoneInput.value
 
         }
         let existingUsers=localStorage.getItem('users')
@@ -37,10 +39,11 @@ function onSubmit(e){
         localStorage.setItem('users',JSON.stringify(existingUsers))
         
         const li=document.createElement('li')
-        li.appendChild(document.createTextNode(`${nameInput.value}:${emailInput.value}`))
+        li.appendChild(document.createTextNode(`${nameInput.value}:${emailInput.value}:${phoneInput.value}`))
      userList.appendChild(li)
      nameInput.value=''
      emailInput.value=''
+     phoneInput.value=''
 
     }
 }
